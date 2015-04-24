@@ -21,7 +21,6 @@ def login_required(f):
     return wrap
 
 
-
 # Home page.  Shows off posts from the posts table.
 # Only accessible when logged in.  Redirects to the login page
 # if accessed without logging in.
