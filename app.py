@@ -21,6 +21,10 @@ def login_required(f):
     return wrap
 
 
+
+# Home page.  Shows off posts from the posts table.
+# Only accessible when logged in.  Redirects to the login page
+# if accessed without logging in.
 @app.route('/')
 @login_required
 def home():
@@ -32,11 +36,13 @@ def home():
     return render_template('index.html', posts=posts)
 
 
+# Welcome page
 @app.route('/welcome')
 def welcome():
     return render_template("welcome.html")
 
 
+# Login page.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -51,6 +57,7 @@ def login():
     return render_template("login.html", error=error)
 
 
+# Log out page.  Requires the user to log in.
 @app.route('/logout')
 @login_required
 def logout():
